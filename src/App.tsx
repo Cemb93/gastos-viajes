@@ -16,14 +16,14 @@ function generateFileName(date: string, company: string): string {
   const formattedCompany = company
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
+    .toUpperCase()
     .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[<>:"/\|?*]/g, "")
+    .replace(/\s+/g, " ");
 
   const safeCompany = formattedCompany || "sin-empresa";
 
-  return `${formattedDate}-gastos-${safeCompany}`;
+  return `${formattedDate} GASTOS ${safeCompany}`;
 }
 
 export default function App() {
