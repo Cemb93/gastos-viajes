@@ -30,13 +30,55 @@ export default function App() {
 
   const downloadPDF = async () => {
     if (!documentRef.current) return;
-    const canvas = await html2canvas(documentRef.current, { scale: 2, backgroundColor: '#fffdf8' });
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-    const image = canvas.toDataURL('image/png');
-    const pageWidth = 190;
-    const pageHeight = canvas.height * pageWidth / canvas.width;
-    pdf.addImage(image, 'PNG', 10, 10, pageWidth, Math.min(pageHeight, 277));
-    pdf.save('presupuesto-de-viaje.pdf');
+
+    const canvas = await html2canvas(documentRef.current, {
+      scale: 3,
+      backgroundColor: "#fffdf8",
+      useCORS: true,
+    });
+
+    const image = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
+
+    const margin = 10;
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    const availableWidth = pageWidth - margin * 2;
+    const availableHeight = pageHeight - margin * 2;
+
+    // Conservamos la proporción original del documento.
+    const aspectRatio = canvas.width / canvas.height;
+
+    let imageWidth = availableWidth;
+    let imageHeight = imageWidth / aspectRatio;
+
+    // Si no cabe verticalmente, reducimos el ancho proporcionalmente.
+    if (imageHeight > availableHeight) {
+      imageHeight = availableHeight;
+      imageWidth = imageHeight * aspectRatio;
+    }
+
+    const x = (pageWidth - imageWidth) / 2;
+    const y = margin;
+
+    pdf.addImage(
+      image,
+      "PNG",
+      x,
+      y,
+      imageWidth,
+      imageHeight,
+      undefined,
+      "FAST"
+    );
+
+    pdf.save("presupuesto-de-viaje.pdf");
   };
 
   const leftKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'otros'];
