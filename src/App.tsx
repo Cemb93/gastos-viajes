@@ -40,7 +40,8 @@ export default function App() {
     if (!documentRef.current) return;
     const canvas = await html2canvas(documentRef.current, { scale: 2, backgroundColor: '#fffdf8' });
     const link = document.createElement('a');
-    link.download = 'presupuesto-de-viaje.png';
+    const fileName = generateFileName(data.date, data.transportCompany);
+    link.download = `${fileName}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
   };
