@@ -99,7 +99,7 @@ button {
 
 .field>span,
 .money-row>.expense-label {
-  font-size: .84rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #3d667d;
   letter-spacing: .035em;
@@ -116,7 +116,7 @@ button {
   padding: 12px 13px;
   color: #1f4055;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   transition: border-color .15s, box-shadow .15s;
 }
 
@@ -200,7 +200,9 @@ button {
   background: transparent;
   padding: 9px 0;
   color: #20465f;
-  font-size: .98rem;
+  /* font-size: .98rem; */
+  /* TAMANIO DEL ANTICIPO EN EL FORMULARIO */
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: right;
 }

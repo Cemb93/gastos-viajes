@@ -110,7 +110,7 @@ export default function App() {
         <div className="editor-heading"><span>✎</span><div><h1>GASTOS DEL VIAJE</h1><p>Completa los datos y registra los gastos del recorrido.</p></div></div>
         <div className="editor-fields">
           <label className="field"><span>Fecha</span><input type="date" value={data.date} onChange={e => update('date', e.target.value)} /></label>
-          <label className="field"><span>Empresa de transporte</span><input value={data.transportCompany} onChange={e => update('transportCompany', e.target.value)} placeholder="Nombre de la empresa" /></label>
+          <label className="field"><span>Empresa</span><input value={data.transportCompany} onChange={e => update('transportCompany', e.target.value)} placeholder="Nombre" /></label>
           <label className="field"><span>Origen</span><input value={data.origin} onChange={e => update('origin', e.target.value)} placeholder="Ciudad de origen" /></label>
           <label className="field"><span>Destino</span><input value={data.destination} onChange={e => update('destination', e.target.value)} placeholder="Ciudad de destino" /></label>
           <div className="field advance-field"><MoneyInput id="realAdvance" label="Anticipo real" value={data.realAdvance} onChange={value => update('realAdvance', value)} /></div>
