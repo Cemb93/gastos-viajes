@@ -1,4 +1,4 @@
-# Presupuesto de viaje
+# GASTOS DEL VIAJE
 
 Formulario responsive con React, Vite y TypeScript, inspirado en la hoja de presupuesto compartida.
 

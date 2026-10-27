@@ -87,8 +87,8 @@ export default function App() {
 
   return (
     <main className="app-shell">
-      <section className="editor-panel" aria-label="Formulario de presupuesto de viaje">
-        <div className="editor-heading"><span>✎</span><div><h1>Presupuesto de viaje</h1><p>Completa los datos y registra los gastos del recorrido.</p></div></div>
+      <section className="editor-panel" aria-label="Formulario de GASTOS DEL VIAJE">
+        <div className="editor-heading"><span>✎</span><div><h1>GASTOS DEL VIAJE</h1><p>Completa los datos y registra los gastos del recorrido.</p></div></div>
         <div className="editor-fields">
           <label className="field"><span>Fecha</span><input type="date" value={data.date} onChange={e => update('date', e.target.value)} /></label>
           <label className="field"><span>Empresa de transporte</span><input value={data.transportCompany} onChange={e => update('transportCompany', e.target.value)} placeholder="Nombre de la empresa" /></label>
@@ -110,7 +110,7 @@ export default function App() {
       <section className="preview-wrap">
         <div className="preview-caption">Vista previa del documento</div>
         <article className="paper" ref={documentRef}>
-          <header className="paper-header"><div className="paper-title">PRESUPUESTO DE VIAJE</div><div className="paper-date"><span>Fecha:</span><strong>{data.date ? new Date(`${data.date}T12:00:00`).toLocaleDateString('es-CO') : '________________'}</strong><span className="calendar-icon">▣</span></div><div className="company-ribbon">EMPRESA DE TRANSPORTE</div><div className="company-value">{data.transportCompany || ' '}</div><div className="truck-icon" aria-hidden="true">🚚</div></header>
+          <header className="paper-header"><div className="paper-title">GASTOS DEL VIAJE</div><div className="paper-date"><span>Fecha:</span><strong>{data.date ? new Date(`${data.date}T12:00:00`).toLocaleDateString('es-CO') : '________________'}</strong><span className="calendar-icon">▣</span></div><div className="company-ribbon">EMPRESA DE TRANSPORTE</div><div className="company-value">{data.transportCompany || ' '}</div><div className="truck-icon" aria-hidden="true">🚚</div></header>
           <section className="paper-route"><div><span>LUGAR DE SALIDA:</span><strong>{data.origin || '____________________'}</strong></div><div><span>DESTINO:</span><strong>{data.destination || '____________________'}</strong></div></section>
           <div className="paper-total"><span>TOTAL:</span><strong>{formatCOP(totalExpenses)}</strong></div>
           <div className="paper-section-ribbon">GASTOS</div>
@@ -121,7 +121,7 @@ export default function App() {
           </section>
           <section className="paper-advance"><span>ANTICIPO REAL</span><strong>{formatCOP(data.realAdvance)}</strong></section>
           <section className="paper-notes"><strong>Notas extras:</strong><p>{data.notes || ''}</p></section>
-          <footer className="paper-footer">PRESUPUESTO DE VIAJE · Registro de gastos</footer>
+          <footer className="paper-footer">GASTOS DEL VIAJE · Registro de gastos</footer>
         </article>
       </section>
     </main>
