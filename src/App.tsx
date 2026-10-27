@@ -8,6 +8,23 @@ import { formatCOP } from './utils/currency';
 const emptyExpenses = Object.fromEntries(expenseFields.map(({ key }) => [key, 0])) as Record<ExpenseKey, number>;
 const today = new Date();
 const localDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+function generateFileName(date: string, company: string): string {
+  const formattedDate = date
+    ? date.split("-").reverse().join("-")
+    : "sin-fecha";
+
+  const formattedCompany = company
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  const safeCompany = formattedCompany || "sin-empresa";
+
+  return `${formattedDate}-gastos-${safeCompany}`;
+}
 
 export default function App() {
   const [data, setData] = useState<TripFormData>({
@@ -78,7 +95,8 @@ export default function App() {
       "FAST"
     );
 
-    pdf.save("presupuesto-de-viaje.pdf");
+    const fileName = generateFileName(data.date, data.transportCompany);
+    pdf.save(`${fileName}.pdf`);
   };
 
   const leftKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'otros'];
