@@ -590,7 +590,9 @@ button {
   }
 
   .money-row>.expense-label {
-    font-size: .77rem;
+    /* font-size: .77rem; */
+    /* TAMANIO TEXTO FORMULARIO GASTOS DE VIAJE */
+    font-size: 1.2rem;
   }
 
   .actions {

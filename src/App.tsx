@@ -100,8 +100,9 @@ export default function App() {
     pdf.save(`${fileName}.pdf`);
   };
 
-  const leftKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'otros'];
-  const rightKeys: ExpenseKey[] = ['acpm/gas', 'montada', 'calibracion', 'aceite', 'engrasada', 'parqueadero', 'lavado', 'aseo', 'hotel'];
+  // const leftKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'otros'];
+  const leftKeys: ExpenseKey[] = ['acpm/gas', 'montada', 'calibracion', 'aceite', 'engrasada', 'parqueadero', 'lavado', 'aseo'];
+  const rightKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'hotel', 'otros'];
   const labels = Object.fromEntries(expenseFields.map(item => [item.key, item.label])) as Record<ExpenseKey, string>;
 
   return (
@@ -130,7 +131,7 @@ export default function App() {
         <div className="preview-caption">Vista previa del documento</div>
         <article className="paper" ref={documentRef}>
           <header className="paper-header"><div className="paper-title">GASTOS DEL VIAJE</div><div className="paper-date"><span>Fecha:</span><strong>{data.date ? new Date(`${data.date}T12:00:00`).toLocaleDateString('es-CO') : '________________'}</strong><span className="calendar-icon">▣</span></div><div className="company-ribbon">EMPRESA DE TRANSPORTE</div><div className="company-value">{data.transportCompany || ' '}</div><div className="truck-icon" aria-hidden="true">🚚</div></header>
-          <section className="paper-route"><div><span>LUGAR DE SALIDA:</span><strong>{data.origin || '____________________'}</strong></div><div><span>DESTINO:</span><strong>{data.destination || '____________________'}</strong></div></section>
+          <section className="paper-route"><div><span>ORIGEN:</span><strong>{data.origin || '____________________'}</strong></div><div><span>DESTINO:</span><strong>{data.destination || '____________________'}</strong></div></section>
           <div className="paper-total"><span>TOTAL:</span><strong>{formatCOP(totalExpenses)}</strong></div>
           <div className="paper-section-ribbon">GASTOS</div>
           <section className="paper-expenses">
