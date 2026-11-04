@@ -22,6 +22,8 @@ export interface TripFormData {
   transportCompany: string;
   origin: string;
   destination: string;
+  placas: string;
+  No_manifiesto: string;
   realAdvance: number;
   notes: string;
   expenses: Record<ExpenseKey, number>;

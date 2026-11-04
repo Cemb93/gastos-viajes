@@ -28,7 +28,7 @@ function generateFileName(date: string, company: string): string {
 
 export default function App() {
   const [data, setData] = useState<TripFormData>({
-    date: localDate, transportCompany: '', origin: '', destination: '', realAdvance: 0, notes: '', expenses: { ...emptyExpenses },
+    date: localDate, transportCompany: '', origin: '', destination: '', placas: '', No_manifiesto: '', realAdvance: 0, notes: '', expenses: { ...emptyExpenses },
   });
   const documentRef = useRef<HTMLElement>(null);
   const totalExpenses = useMemo(() => Object.values(data.expenses).reduce((sum, value) => sum + value, 0), [data.expenses]);
@@ -114,6 +114,8 @@ export default function App() {
           <label className="field"><span>Empresa</span><input value={data.transportCompany} onChange={e => update('transportCompany', e.target.value)} placeholder="Nombre" /></label>
           <label className="field"><span>Origen</span><input value={data.origin} onChange={e => update('origin', e.target.value)} placeholder="Ciudad de origen" /></label>
           <label className="field"><span>Destino</span><input value={data.destination} onChange={e => update('destination', e.target.value)} placeholder="Ciudad de destino" /></label>
+          <label className="field"><span>Placas</span><input value={data.placas} onChange={e => update('placas', e.target.value)} placeholder="Placas del vehiculo" /></label>
+          <label className="field"><span># de manifiesto</span><input value={data.No_manifiesto} onChange={e => update('No_manifiesto', e.target.value)} placeholder="Número de manifiesto" /></label>
           <div className="field advance-field"><MoneyInput id="realAdvance" label="Anticipo real" value={data.realAdvance} onChange={value => update('realAdvance', value)} /></div>
         </div>
         <div className="editor-section-title">Gastos del viaje</div>
