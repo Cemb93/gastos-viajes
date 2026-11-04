@@ -134,14 +134,16 @@ export default function App() {
         <article className="paper" ref={documentRef}>
           <header className="paper-header"><div className="paper-title">GASTOS DEL VIAJE</div><div className="paper-date"><span>Fecha:</span><strong>{data.date ? new Date(`${data.date}T12:00:00`).toLocaleDateString('es-CO') : '________________'}</strong><span className="calendar-icon">▣</span></div><div className="company-ribbon">EMPRESA DE TRANSPORTE</div><div className="company-value">{data.transportCompany || ' '}</div><div className="truck-icon" aria-hidden="true">🚚</div></header>
           <section className="paper-route"><div><span>ORIGEN:</span><strong>{data.origin || '____________________'}</strong></div><div><span>DESTINO:</span><strong>{data.destination || '____________________'}</strong></div></section>
-          <div className="paper-total"><span>TOTAL:</span><strong>{formatCOP(totalExpenses)}</strong></div>
+          <section className="paper-route"><div><span>PLACAS:</span><strong>{data.placas || '____________________'}</strong></div><div><span># MANIFIESTO:</span><strong>{data.No_manifiesto || '____________________'}</strong></div></section>
+          <section className="paper-advance"><span>ANTICIPO REAL</span><strong>{formatCOP(data.realAdvance)}</strong></section>
+          <br />
           <div className="paper-section-ribbon">GASTOS</div>
           <section className="paper-expenses">
             {[leftKeys, rightKeys].map((keys, columnIndex) => <div className="paper-expense-column" key={columnIndex}>
               {keys.map(key => <div className="paper-expense-row" key={key}><span className="paper-expense-label">{labels[key]}</span><span className="paper-expense-value">{data.expenses[key] ? formatCOP(data.expenses[key]) : '________________'}</span></div>)}
             </div>)}
           </section>
-          <section className="paper-advance"><span>ANTICIPO REAL</span><strong>{formatCOP(data.realAdvance)}</strong></section>
+          <div className="paper-total"><span>TOTAL:</span><strong>{formatCOP(totalExpenses)}</strong></div>
           <section className="paper-notes"><strong>Notas extras:</strong><p>{data.notes || ''}</p></section>
           <footer className="paper-footer">GASTOS DEL VIAJE · Registro de gastos</footer>
         </article>
