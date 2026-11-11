@@ -100,9 +100,35 @@ export default function App() {
     pdf.save(`${fileName}.pdf`);
   };
 
-  // const leftKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'otros'];
-  const leftKeys: ExpenseKey[] = ['acpm/gas', 'montada', 'calibracion', 'aceite', 'engrasada', 'parqueadero', 'lavado', 'aseo'];
-  const rightKeys: ExpenseKey[] = ['conductor', 'cargue', 'descargue', 'comision', 'peaje', 'hotel', 'otros'];
+  const leftKeys: ExpenseKey[] = [
+    'aceite',
+    'acpm/gas',
+    'aseo',
+    'calibracion',
+    'cambio de aceite',
+    'calibración de aire',
+    'despinchada',
+    'engrasada',
+    'lavado',
+    'montada',
+    'parqueadero',
+    'peajes',
+  ];
+
+  const rightKeys: ExpenseKey[] = [
+    'comision',
+    'conductor',
+    'cargue',
+    'descargue',
+    'hotel',
+    'mantenimiento de frenos',
+    'mantenimiento de ruedas',
+    'mantenimiento de suspensión',
+    'mantenimiento del trailer',
+    'revisión eléctrica',
+    'otros',
+  ];
+
   const labels = Object.fromEntries(expenseFields.map(item => [item.key, item.label])) as Record<ExpenseKey, string>;
 
   return (

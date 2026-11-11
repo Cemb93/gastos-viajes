@@ -3,8 +3,7 @@ export const expenseFields = [
   { key: 'cargue', label: 'Cargue' },
   { key: 'descargue', label: 'Descargue' },
   { key: 'comision', label: 'Comisión' },
-  { key: 'peaje', label: 'Peaje' },
-  { key: 'otros', label: 'Otros' },
+  { key: 'peajes', label: 'Peajes' },
   { key: 'acpm/gas', label: 'ACPM / GAS' },
   { key: 'montada', label: 'Montada' },
   { key: 'calibracion', label: 'Calibración' },
@@ -14,6 +13,15 @@ export const expenseFields = [
   { key: 'lavado', label: 'Lavado' },
   { key: 'aseo', label: 'Aseo' },
   { key: 'hotel', label: 'Hotel' },
+  { key: 'despinchada', label: 'Despinchada' },
+  { key: 'calibración de aire', label: 'Calibración de Aire' },
+  { key: 'cambio de aceite', label: 'Cambio de Aceite' },
+  { key: 'mantenimiento del trailer', label: 'Mantenimiento del Trailer' },
+  { key: 'mantenimiento de ruedas', label: 'Mantenimiento de Ruedas' },
+  { key: 'mantenimiento de suspensión', label: 'Mantenimiento de Suspensión' },
+  { key: 'mantenimiento de frenos', label: 'Mantenimiento de Frenos' },
+  { key: 'revisión eléctrica', label: 'Revisión Eléctrica' },
+  { key: 'otros', label: 'Otros' },
 ] as const;
 
 export type ExpenseKey = typeof expenseFields[number]['key'];
